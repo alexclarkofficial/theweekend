@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20131009233940) do
     t.string   "remember_token"
   end
 
+  add_index "users", ["name", "email"], name: "index_users_on_name_and_email", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update, :show]
+  before_action :signed_in_user, only: [:edit, :update, :show, :index]
   before_action :correct_user,   only: [:edit, :update]
 
   def new
@@ -15,6 +15,10 @@ class UsersController < ApplicationController
     else
   	  render 'new'
     end
+  end
+
+  def index
+    @users = User.paginate(page: params[:page])
   end
 
   def show
@@ -43,7 +47,10 @@ class UsersController < ApplicationController
   # Before filters
 
   def signed_in_user
-    redirect_to root_path, notice: "Please sign in." unless signed_in?
+    unless signed_in?
+      store_location
+      redirect_to root_path, notice: "Please sign in."
+    end
   end
 
 

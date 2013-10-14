@@ -2,8 +2,7 @@
   <div class="span6 offset3">
     <%= form_for(:session, url: sessions_path) do |f| %>
 
-      <%= f.text_field :name, :placeholder => "Username or email",
-                       title: 'username' %>
+      <%= f.text_field :name, :placeholder => "Username or email" %>
 
       <%= f.password_field :password, :placeholder => "Password" %>
 
