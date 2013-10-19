@@ -16,6 +16,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
+  it { should respond_to(:weekends) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -132,5 +133,29 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) {should_not be_blank}
+  end
+
+  describe "weekends associations" do
+
+    before { @user.save }
+    let!(:older_weekend) do
+      FactoryGirl.create(:weekend, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_weekend) do
+      FactoryGirl.create(:weekend, user: @user, created_at: 1.day.ago)
+    end
+
+    it "should have the right weekend in the right order" do
+      expect(@user.weekends.to_a).to eq [newer_weekend, older_weekend]
+    end
+
+    it "should destroy associated microposts" do
+      weekends = @user.weekends.to_a
+      @user.destroy
+      expect(weekends).not_to be_empty
+      weekends.each do |weekend|
+        expect(Weekend.where(id: weekend.id)).to be_empty
+      end
+    end
   end
 end

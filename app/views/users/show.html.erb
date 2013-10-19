@@ -10,4 +10,13 @@
       </p>
     </section>
   </aside>
+  <div class="span8">
+    <% if @user.weekends.any? %>
+      <h3>Weekends</h3>
+      <ul class="weekends">
+        <%= render @weekends %>
+      </ul>
+      <%= will_paginate @weekends %>
+    <% end %>
+  </div>
 </div>

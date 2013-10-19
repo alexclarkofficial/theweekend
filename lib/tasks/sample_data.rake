@@ -1,3 +1,5 @@
+require 'date'
+
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
@@ -14,6 +16,11 @@ namespace :db do
                    email: email,
                    password: password,
                    password_confirmation: password)
+    end
+    users = User.all
+    weeks = [[2013,10,19], [2013,10,12], [2013,10,5]]
+    weeks.map do |date|
+      users.each { |user| user.weekends.create!(week: (Date.new *date)) }
     end
   end
 end

@@ -6,7 +6,12 @@ FactoryGirl.define do
     password_confirmation "foobar"
 
     factory :admin do
-	  admin true
+	    admin true
     end
+  end
+
+  factory :weekend do
+  	week Date.new(2013,10,19)
+  	user
   end
 end

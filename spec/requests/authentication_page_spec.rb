@@ -61,6 +61,19 @@ describe "Authentication" do
             before { visit users_path }
             it { should have_button('Sign in') }
           end
+
+          describe "in the Weekends controller" do
+
+            describe "submitting to the create action" do
+              before { post weekends_path }
+              specify { expect(response).to redirect_to(root_path) }
+            end
+
+            describe "submitting to the destroy action" do
+              before { delete weekend_path(FactoryGirl.create(:weekend)) }
+              specify { expect(response).to redirect_to(root_path) }
+            end
+          end
         end
 
         describe "when attempting to visit a protected page" do
