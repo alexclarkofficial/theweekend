@@ -62,33 +62,56 @@ describe "Authentication" do
             it { should have_button('Sign in') }
           end
 
-          describe "in the Weekends controller" do
+          describe "visiting the following page" do
+            before { visit following_user_path(user) }
+            it { should have_button('Sign in') }
+          end
 
-            describe "submitting to the create action" do
-              before { post weekends_path }
-              specify { expect(response).to redirect_to(root_path) }
+          describe "visiting the followers page" do
+            before { visit followers_user_path(user) }
+            it { should have_button('Sign in') }
+          end
+
+          describe "when attempting to visit a protected page" do
+            before do
+              visit edit_user_path(user)
+              fill_in "Username or email",    with: user.name
+              fill_in "Password", with: user.password
+              click_button "Sign in"
             end
 
-            describe "submitting to the destroy action" do
-              before { delete weekend_path(FactoryGirl.create(:weekend)) }
-              specify { expect(response).to redirect_to(root_path) }
+            describe "after signing in" do
+
+              it "should render the desired protected page" do
+                expect(page).to have_title('Edit Profile')
+              end
             end
           end
         end
 
-        describe "when attempting to visit a protected page" do
-          before do
-            visit edit_user_path(user)
-            fill_in "Username or email",    with: user.name
-            fill_in "Password", with: user.password
-            click_button "Sign in"
+        describe "in the Weekends controller" do
+
+          describe "submitting to the create action" do
+            before { post weekends_path }
+            specify { expect(response).to redirect_to(root_path) }
           end
 
-          describe "after signing in" do
+          describe "submitting to the destroy action" do
+            before { delete weekend_path(FactoryGirl.create(:weekend)) }
+            specify { expect(response).to redirect_to(root_path) }
+          end
+        end
 
-            it "should render the desired protected page" do
-              expect(page).to have_title('Edit Profile')
-            end
+        describe "in the Relationships controller" do
+
+          describe "submitting to the create action" do
+            before { post relationships_path }
+            specify { expect(response).to redirect_to(root_path) }
+          end
+
+          describe "submitting to the destroy action" do
+            before { delete relationship_path(1) }
+            specify { expect(response).to redirect_to(root_path) }
           end
         end
       end

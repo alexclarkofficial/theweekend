@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_back_or user
     else
-      flash[:error] = 'Please enter a valid username or email' # Not quite right!
+      flash[:error] = 'Please enter a valid username or email'
       redirect_to root_path
     end
   end

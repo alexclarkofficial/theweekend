@@ -3,5 +3,18 @@
   <p>stuff.</p>
   <% unless signed_in? %>
     <%= render 'static_pages/signin' %>
+  <% else %>
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+  <div class="row">
+    <div class="span8">
+      <h3>Weekend Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
   <% end %>
 </div>
