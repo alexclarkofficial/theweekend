@@ -116,6 +116,15 @@ describe "User pages" do
       it { should have_link(user.name, href: user_path(user)) }
     end
 
+    describe "non-follower" do
+      before do
+        sign_in user
+        visit user_path(other_user)
+      end
+
+      it { should have_url(users_path) }
+    end
+
     describe "follow/unfollow buttons" do
       before do
         sign_in user
