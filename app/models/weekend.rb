@@ -1,6 +1,7 @@
 class Weekend < ActiveRecord::Base
   belongs_to :user
-  default_scope -> { order('created_at DESC') }
+  has_many :votes, dependent: :destroy
+  default_scope -> { order('week DESC') }
   validates :week, presence: true
   validates :user_id, presence: true
 

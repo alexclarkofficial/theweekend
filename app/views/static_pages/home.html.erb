@@ -1,20 +1,20 @@
 <div class="center hero-unit">
-  <% unless signed_in? %>
+  <% if signed_in? %>
+    <section>
+      <%= render 'shared/user_info' %>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+    <div class="row">
+      <div class="span8">
+        <h3>Weekend Feed</h3>
+        <%= render 'shared/feed' %>
+      </div>
+    </div>
+  <% else signed_in? %>
     <h1>The Weekend</h1>
     <p>stuff.</p>
     <%= render 'shared/signin' %>
-  <% else %>
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-  <div class="row">
-    <div class="span8">
-      <h3>Weekend Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
-  </div>
   <% end %>
 </div>

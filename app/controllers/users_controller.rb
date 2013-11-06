@@ -3,7 +3,6 @@ class UsersController < ApplicationController
                 only: [:index, :show, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user,   only: :destroy
-  before_action :follower,     only: :show
 
   def new
     @user = User.new
@@ -26,6 +25,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @weekends = @user.weekends.paginate(page: params[:page])
   end
 
   def edit
@@ -35,7 +35,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      # Handle a successful update.
+      flash[:success] = "Profile updated"
+      redirect_to @user
     else
       render 'edit'
     end
@@ -87,8 +88,6 @@ class UsersController < ApplicationController
 
   def follower
     @user = User.find(params[:id])
-    unless @user.followers.include?(current_user) || current_user?(@user) {
-      redirect_to(root_url)
-    }
+    redirect_to(users_path) unless @user.followers.include?(current_user) || current_user?(@user)
   end
 end

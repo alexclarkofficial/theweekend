@@ -1,6 +1,6 @@
 <li>
-  <span class="week"><%= weekend.week %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(weekend.created_at) %> ago.
+  <span class="week"><%= weekend.week %><%= weekend.votes.count %></span>
+  <span class="votes">
+    <%= (weekend.votes.count) %> votes.
   </span>
 </li>

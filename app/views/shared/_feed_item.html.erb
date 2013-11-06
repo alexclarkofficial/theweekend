@@ -3,7 +3,6 @@
     <%= link_to feed_item.user.name, feed_item.user %>
   </span>
   <span class="week"><%= feed_item.week %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+  <span class="votes"> <%= feed_item.votes.count %> Votes </span>
   </span>
 </li>

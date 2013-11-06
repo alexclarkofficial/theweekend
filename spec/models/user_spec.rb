@@ -25,6 +25,7 @@ describe User do
   it { should respond_to(:followers) }
   it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
+  it { should respond_to(:votes) }  
   it { should be_valid }
   it { should_not be_admin }
 
@@ -144,11 +145,11 @@ describe User do
 
   describe "weekends associations" do
     before { @user.save }
-    let!(:older_weekend) do
-      FactoryGirl.create(:weekend, user: @user, created_at: 1.day.ago)
-    end
     let!(:newer_weekend) do
-      FactoryGirl.create(:weekend, user: @user, created_at: 1.day.ago)
+      FactoryGirl.create(:weekend, user: @user, week: Date.new(2013,11,02))
+    end
+    let!(:older_weekend) do
+      FactoryGirl.create(:weekend, user: @user, week: Date.new(2013,10,26))
     end
 
     describe "feed" do
@@ -192,6 +193,25 @@ describe User do
         followed_user.weekends.each do |weekend|
           should include(weekend)
         end
+      end
+    end
+  end
+
+  describe "votes associations" do
+    before do
+      @user.save
+      author = FactoryGirl.create(:user)
+      @weekend = FactoryGirl.create(:weekend, user: author)
+    end
+
+    let!(:vote) { FactoryGirl.create(:vote, user_id: @user.id, weekend_id: @weekend.id) }
+
+    it "should destroy votes when destroyed" do
+      votes = @user.votes.to_a
+      @user.destroy
+      expect(votes).to_not be_empty
+      votes.each do |vote|
+        expect(Vote.where(id: vote.id)).to be_empty
       end
     end
   end

@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	user = User.find_by(name: params[:session][:name])
+  	user = User.where("LOWER(name) = LOWER(?)", params[:session][:name_or_email].downcase).first
+    user ||= User.where("LOWER(email) = LOWER(?)", params[:session][:name_or_email].downcase).first
     if user && user.authenticate(params[:session][:password])
       sign_in user
       redirect_back_or user

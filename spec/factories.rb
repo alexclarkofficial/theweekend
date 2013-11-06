@@ -14,4 +14,9 @@ FactoryGirl.define do
   	week Date.new(2013,10,19)
   	user
   end
+
+  factory :vote do
+    user
+    weekend
+  end
 end

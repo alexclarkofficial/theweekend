@@ -41,6 +41,54 @@ describe "Authentication" do
       end
   	end
 
+    describe "with valid email" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        fill_in "Username or email", with: user.email
+        fill_in "Password", with: user.password
+        click_button "Sign in"
+      end
+
+      it { should have_title(user.name) }
+      it { should have_link('Settings',    href: edit_user_path(user)) }
+      it { should have_link('Sign out',    href: signout_path) }
+      it { should_not have_link('Sign in', href: signin_path) }
+      it { should have_link('Users',       href: users_path) }
+
+    end
+
+    describe "with valid upcase name" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        fill_in "Username or email", with: user.name.upcase
+        fill_in "Password", with: user.password
+        click_button "Sign in"
+      end
+
+      it { should have_title(user.name) }
+      it { should have_link('Settings',    href: edit_user_path(user)) }
+      it { should have_link('Sign out',    href: signout_path) }
+      it { should_not have_link('Sign in', href: signin_path) }
+      it { should have_link('Users',       href: users_path) }
+
+    end
+
+    describe "with valid upcase email" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        fill_in "Username or email", with: user.email.upcase
+        fill_in "Password", with: user.password
+        click_button "Sign in"
+      end
+
+      it { should have_title(user.name) }
+      it { should have_link('Settings',    href: edit_user_path(user)) }
+      it { should have_link('Sign out',    href: signout_path) }
+      it { should_not have_link('Sign in', href: signin_path) }
+      it { should have_link('Users',       href: users_path) }
+
+    end
+
     describe "authorization" do
       describe "for non-signed-in users" do
         let(:user) { FactoryGirl.create(:user) }

@@ -4,7 +4,8 @@
 <%= will_paginate %>
 
 <ul class="users">
-    <%= render @users %>
+   <%= render partial: 'user', collection: @users %>
+   <%#= render partial: 'follow_form', collection: @users %>
 </ul>
 
 <%= will_paginate %>
