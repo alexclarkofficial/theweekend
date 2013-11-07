@@ -20,15 +20,15 @@ describe "Static pages" do
     describe "for signed-in users" do
       let(:user) {FactoryGirl.create(:user) }
       before do
-        FactoryGirl.create(:weekend, user: user, week: Date.new(2013,10,20))
-        FactoryGirl.create(:weekend, user: user, week: Date.new(2013,10,13))
+        FactoryGirl.create(:weekend, user: user, week: FactoryGirl.create(:week, date: Date.new(2013,10,20)))
+        FactoryGirl.create(:weekend, user: user, week: FactoryGirl.create(:week, date: Date.new(2013,10,13)))
         sign_in user
         visit root_path
       end
 
       it "should render the user's feed" do
         user.feed.each do |item|
-          expect(page).to have_selector("li##{item.id}", text: item.week)
+          expect(page).to have_selector("li##{item.id}", text: item.week.date)
         end
       end
 

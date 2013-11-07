@@ -2,7 +2,8 @@
   <span class="user">
     <%= link_to feed_item.user.name, feed_item.user %>
   </span>
-  <span class="week"><%= feed_item.week %></span>
+  <span class="week"><%= feed_item.week.date %></span>
   <span class="votes"> <%= feed_item.votes.count %> Votes </span>
+  <%= render 'weekends/vote_form', :weekend => feed_item %>
   </span>
 </li>

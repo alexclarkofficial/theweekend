@@ -1,0 +1,7 @@
+<div id="vote_form">
+  <% if current_user.voted_for?(weekend) %>
+    <%= render 'weekends/unvote', :weekend => weekend %>
+  <% else %>
+    <%= render 'weekends/vote', :weekend => weekend %>
+  <% end %>
+</div>

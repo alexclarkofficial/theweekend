@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
   has_many :weekends, dependent: :destroy
-  has_many :votes, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_relationships, foreign_key: "followed_id",
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
+  has_many :votes, dependent: :destroy
+  has_many :voted_weekends, through: :votes, source: :weekend
   before_save do
     email.downcase!
     name
@@ -38,6 +39,18 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy!
+  end
+
+  def voted_for?(weekend)
+    votes.find_by(weekend_id: weekend.id)
+  end
+
+  def vote!(weekend)
+    votes.create!(weekend_id: weekend.id)
+  end
+
+  def unvote!(weekend)
+    votes.find_by(weekend_id: weekend.id).destroy!
   end
 
   def feed

@@ -2,9 +2,10 @@ require 'spec_helper'
 
 describe Vote do
 
-  let(:user) { FactoryGirl.create(:user) }
-  let(:other_user) { FactoryGirl.create(:user) }
-  let(:weekend) { FactoryGirl.create(:weekend, user: user, week: Date.new(2013,10,20)) }
+  let (:user) { FactoryGirl.create(:user) }
+  let (:other_user) { FactoryGirl.create(:user) }
+  let (:week) { FactoryGirl.create(:week) }
+  let (:weekend) { FactoryGirl.create(:weekend, user: user, week_id: week.id) }
   before { @vote = other_user.votes.build(weekend_id: weekend.id) }
 
   subject { @vote }
@@ -24,9 +25,8 @@ describe Vote do
   end
 
   it "does not duplicate votes" do
-   user = FactoryGirl.create(:user)
-    weekend = FactoryGirl.create(:weekend)
-    FactoryGirl.create(:vote, user_id: user.id, weekend_id: 9000)
-    FactoryGirl.build(:vote, user_id: user.id, weekend_id: 9000).should_not be_valid
+    user = FactoryGirl.create(:user)
+    FactoryGirl.create(:vote, user_id: user.id, weekend_id: weekend.id)
+    FactoryGirl.build(:vote, user_id: user.id, weekend_id: weekend.id).should_not be_valid
   end
 end

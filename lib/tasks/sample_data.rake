@@ -4,6 +4,7 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     make_users
+    make_weeks
     make_weekends
     make_relationships
     make_votes
@@ -27,11 +28,18 @@ def make_users
   end
 end
 
+def make_weeks
+  dates = [[2013,10,19], [2013,10,12], [2013,10,5], [2013,11,02]]
+  dates.map do |date|
+    Week.create!(date: (Date.new *date))
+  end
+end
+
 def make_weekends
   users = User.all
-  weeks = [[2013,10,19], [2013,10,12], [2013,10,5], [2013,11,02]]
-  weeks.map do |date|
-    users.each { |user| user.weekends.create!(week: (Date.new *date)) }
+  weeks = Week.all
+  users.each do |user|
+    weeks.each { |week| user.weekends.create!(week_id: week.id) }
   end
 end
 

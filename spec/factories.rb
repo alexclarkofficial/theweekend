@@ -10,8 +10,12 @@ FactoryGirl.define do
     end
   end
 
+  factory :week do
+    date Date.new(2013,11,02)
+  end
+
   factory :weekend do
-  	week Date.new(2013,10,19)
+  	week
   	user
   end
 

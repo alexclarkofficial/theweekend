@@ -1,6 +1,7 @@
 <li>
-  <span class="week"><%= weekend.week %><%= weekend.votes.count %></span>
+  <span class="week"><%= weekend.week.date %></span>
   <span class="votes">
-    <%= (weekend.votes.count) %> votes.
+    <%= (weekend.votes.count) %> votes. 
+    <%= render 'weekends/vote_form', :weekend => weekend %>
   </span>
 </li>

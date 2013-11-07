@@ -72,8 +72,10 @@ describe "User pages" do
 
   describe "my weekends page" do
     let(:user) { FactoryGirl.create(:user) }
-    let!(:w1) { FactoryGirl.create(:weekend, user: user, week: Date.new(2013,10,19)) }
-    let!(:w2) { FactoryGirl.create(:weekend, user: user, week: Date.new(2013,10,12)) }
+    let(:week1) { FactoryGirl.create(:week)}
+    let(:week2) { FactoryGirl.create(:week, date: Date.new(2013,10,26))}
+    let!(:w1) { FactoryGirl.create(:weekend, user: user, week_id: week1.id) }
+    let!(:w2) { FactoryGirl.create(:weekend, user: user, week_id: week2.id) }
 
     before do
       sign_in user
@@ -84,8 +86,8 @@ describe "User pages" do
     it { should have_title(user.name) }
 
     describe "weekends" do
-      it { should have_content(w1.week) }
-      it { should have_content(w2.week) }
+      it { should have_content(w1.week.date) }
+      it { should have_content(w2.week.date) }
     end
   end
 
