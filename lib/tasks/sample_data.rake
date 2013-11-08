@@ -1,4 +1,5 @@
 require 'date'
+require 'carrierwave/orm/activerecord'
 
 namespace :db do
   desc "Fill database with sample data"
@@ -8,6 +9,7 @@ namespace :db do
     make_weekends
     make_relationships
     make_votes
+    make_images
   end
 end
 
@@ -60,5 +62,17 @@ def make_votes
     author.weekends.each do |weekend|
       weekend.votes.create!(user_id: voter.id)
     end
+  end
+end
+
+def make_images
+  weekends = Weekend.all
+  weekends.each do |weekend|
+    # uploader = ImageUploader.new
+    # uploader.store!(File.open("app/assets/images/sample_image.jpg"))
+    image = weekend.images.create!
+    #image.image = params[:file]
+    image.image = File.open("app/assets/images/sample_image.jpg")
+    image.save!
   end
 end

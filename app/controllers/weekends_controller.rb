@@ -6,5 +6,5 @@ class WeekendsController < ApplicationController
   
   def destroy
   end
-	
+
 end

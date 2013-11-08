@@ -6,6 +6,9 @@ class Weekend < ActiveRecord::Base
   validates :week_id, presence: true
   validates :user_id, presence: true
   has_many :voters, through: :votes, source: :user
+  has_many :images
+
+  accepts_nested_attributes_for :images
 
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relationships

@@ -13,6 +13,8 @@ gem 'pry'
 gem 'pry-debugger'
 gem 'launchy'
 gem 'devise'
+gem 'carrierwave'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106201643) do
+ActiveRecord::Schema.define(version: 20131108131148) do
+
+  create_table "images", force: true do |t|
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "weekend_id"
+  end
+
+  add_index "images", ["image"], name: "index_images_on_image", using: :btree
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"

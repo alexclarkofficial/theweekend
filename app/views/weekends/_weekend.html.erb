@@ -1,5 +1,6 @@
 <li>
   <span class="week"><%= weekend.week.date %></span>
+  <%= image_tag weekend.images.first.image.url %>
   <span class="votes">
     <%= (weekend.votes.count) %> votes. 
     <%= render 'weekends/vote_form', :weekend => weekend %>
