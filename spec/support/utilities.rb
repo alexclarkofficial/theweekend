@@ -2,7 +2,7 @@ include ApplicationHelper
 
 def valid_signin(user)
   fill_in "Username or email", with: user.name
-  fill_in "Password",          with: user.password
+  fill_in "Password", with: user.password
   click_button "Sign in"
 end
 
@@ -21,7 +21,7 @@ def sign_in(user, options={})
   else
     visit root_path
     fill_in "Username or email", with: user.name
-    fill_in "Password",          with: user.password
+    fill_in "Password", with: user.password
     click_button "Sign in"
   end
 end

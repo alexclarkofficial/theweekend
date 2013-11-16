@@ -23,4 +23,8 @@ FactoryGirl.define do
     user
     weekend
   end
+
+  factory :image do
+    weekend
+  end
 end

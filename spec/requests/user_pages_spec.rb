@@ -76,6 +76,8 @@ describe "User pages" do
     let(:week2) { FactoryGirl.create(:week, date: Date.new(2013,10,26))}
     let!(:w1) { FactoryGirl.create(:weekend, user: user, week_id: week1.id) }
     let!(:w2) { FactoryGirl.create(:weekend, user: user, week_id: week2.id) }
+    let!(:image1) { FactoryGirl.create(:image, weekend_id: w1.id) }
+    let!(:image2) { FactoryGirl.create(:image, weekend_id: w2.id) }
 
     before do
       sign_in user

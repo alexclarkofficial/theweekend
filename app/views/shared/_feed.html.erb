@@ -1,6 +1,10 @@
-<% if @feed_items.any? %>
-  <ol class="weekends">
+<% weeks = Week.all %>
+<% weeks.each do |week| %>
+  <li><%= week.date %></li>
+  <% end %>
+    <% if @feed_items.any? %>
+  <div class="weekends">
     <%= render partial: 'shared/feed_item', collection: @feed_items %>
-  </ol>
+  </div>
   <%= will_paginate @feed_items %>
 <% end %>

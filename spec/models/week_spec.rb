@@ -8,6 +8,5 @@ describe Week do
   subject { @week }
 
   it { should respond_to(:date) }
-  it { should respond_to(:image) }
   
 end

@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Image do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before { @image = Image.new }
+
+  subject { @image }
+
+  it { should respond_to (:image) }
+  
 end

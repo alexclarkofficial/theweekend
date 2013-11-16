@@ -68,10 +68,7 @@ end
 def make_images
   weekends = Weekend.all
   weekends.each do |weekend|
-    # uploader = ImageUploader.new
-    # uploader.store!(File.open("app/assets/images/sample_image.jpg"))
     image = weekend.images.create!
-    #image.image = params[:file]
     image.image = File.open("app/assets/images/sample_image.jpg")
     image.save!
   end

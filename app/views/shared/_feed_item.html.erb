@@ -1,9 +1,10 @@
-<li id="<%= feed_item.id %>">
-  <span class="user">
+<div class="list-group-item" id="<%= feed_item.id %>">
+  <div class="user">
     <%= link_to feed_item.user.name, feed_item.user %>
-  </span>
-  <span class="week"><%= feed_item.week.date %></span>
-  <span class="votes"> <%= feed_item.votes.count %> Votes </span>
-  <%= render 'weekends/vote_form', :weekend => feed_item %>
-  </span>
-</li>
+  </div>
+  <div class="week"><%= feed_item.week.date %></div>
+    <div class="votes"> <%= feed_item.votes.count %> Votes </div>
+    <%= render 'weekends/vote_form', :weekend => feed_item %>
+    <%= image_tag feed_item.images.first.image.url(:thumb) %>
+  </div>
+</div>

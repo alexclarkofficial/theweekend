@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: theweekend_blah
+  database: theweekend_dev
   host: localhost
   pool: 5
 

@@ -6,43 +6,42 @@ describe "Authentication" do
 
   describe "signin" do
 
-  	before { visit root_path }
+    let(:user) { FactoryGirl.create(:user, password: "foobar") }
+    before { visit root_path }
 
-  	it { should have_button('Sign in') }
+    it { should have_button('Sign in') }
 
-  	describe "with invalid information" do
-  	  before { click_button "Sign in" }
+    describe "with invalid information" do
+      before { click_button "Sign in" }
+      it { should have_selector('div.alert.alert-error', text: 'Please enter a valid username or email') }
+    end
 
-  	  it { should have_selector('div.alert.alert-error', text: 'Please enter a valid username or email') }
-  	end
+    describe "after visiting another page" do
+      before { click_link "TheWeekend" }
+      it { should_not have_selector('div.alert.alert-error') }
+    end
 
-  	  describe "after visiting another page" do
-        before { click_link "The Weekend" }
-        it { should_not have_selector('div.alert.alert-error') }
+    describe "with valid username", :focus => true do
+      
+      before do
+        fill_in "Username or email", with: user.name
+        fill_in "Password", with: "foobar"
+        click_button "Sign in"
       end
 
-  	describe "with valid username" do
-  	  let(:user) { FactoryGirl.create(:user) }
-  	  before do
-  	    fill_in "Username or email", with: user.name
-  	    fill_in "Password", with: user.password
-  	    click_button "Sign in"
-  	  end
-
-  	  it { should have_title(user.name) }
+      it { should have_title(user.name) }
       it { should have_link('Settings',    href: edit_user_path(user)) }
       it { should have_link('Sign out',    href: signout_path) }
-      it { should_not have_link('Sign in', href: signin_path) }
+      it { should_not have_button('Sign in', href: signin_path) }
       it { should have_link('Users',       href: users_path) }
-
+      
       describe "followed by signout" do
         before { click_link "Sign out" }
         it { should have_button('Sign in') }
       end
-  	end
+    end
 
     describe "with valid email" do
-      let(:user) { FactoryGirl.create(:user) }
       before do
         fill_in "Username or email", with: user.email
         fill_in "Password", with: user.password
@@ -58,7 +57,6 @@ describe "Authentication" do
     end
 
     describe "with valid upcase name" do
-      let(:user) { FactoryGirl.create(:user) }
       before do
         fill_in "Username or email", with: user.name.upcase
         fill_in "Password", with: user.password
@@ -74,7 +72,6 @@ describe "Authentication" do
     end
 
     describe "with valid upcase email" do
-      let(:user) { FactoryGirl.create(:user) }
       before do
         fill_in "Username or email", with: user.email.upcase
         fill_in "Password", with: user.password
@@ -124,7 +121,7 @@ describe "Authentication" do
           describe "when attempting to visit a protected page" do
             before do
               visit edit_user_path(user)
-              fill_in "Username or email",    with: user.name
+              fill_in "Username or email", with: user.name
               fill_in "Password", with: user.password
               click_button "Sign in"
             end
