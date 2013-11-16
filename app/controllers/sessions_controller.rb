@@ -1,12 +1,4 @@
 class SessionsController < ApplicationController
-
-before_filter :bla
-
-def bla
-  binding.pry
-end
-
-
   
   def new
   end
