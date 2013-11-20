@@ -1,10 +1,8 @@
-<% weeks = Week.all %>
-<% weeks.each do |week| %>
-  <li><%= week.date %></li>
-  <% end %>
-    <% if @feed_items.any? %>
-  <div class="weekends">
-    <%= render partial: 'shared/feed_item', collection: @feed_items %>
-  </div>
-  <%= will_paginate @feed_items %>
-<% end %>
+
+
+    <% @week_items.each do |week, weekends| %>
+    <div class="list-group-item">
+      <p class="week"><%= week.date %></p>
+      <%= render 'shared/feed_item', :weekends => weekends %>
+    </div>
+    <% end %>

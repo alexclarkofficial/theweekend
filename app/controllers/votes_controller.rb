@@ -4,13 +4,13 @@ class VotesController < ApplicationController
   def create
     @weekend = Weekend.find(params[:vote][:weekend_id])
     current_user.vote!(@weekend)
-    redirect_to root_path
+    redirect_to :back
   end
 
   def destroy
     @weekend = Vote.find(params[:id]).weekend
     current_user.unvote!(@weekend)
-    redirect_to root_path
+    redirect_to :back
   end
   
 end

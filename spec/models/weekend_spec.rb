@@ -12,7 +12,7 @@ describe Weekend do
   it { should respond_to(:week) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
-  its(:user) { should eq user }
+  its (:user) { should eq user }
   it { should respond_to(:votes) }
   it { should respond_to(:voters) }
 

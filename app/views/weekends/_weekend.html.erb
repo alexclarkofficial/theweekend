@@ -1,8 +1,5 @@
-  <div class="list-group-item">
-      <div class="week"><h2><%= weekend.week.date %></h2></div>
-      <div>
-        <%= (weekend.votes.count) %> votes.
-      </div>
-      <%= render 'weekends/vote_form', :weekend => weekend %>
-    <%= image_tag weekend.images.first.image.url(:thumb).to_s %>
-  </div>
+<div class="list-group-item">
+  <div class="week"><%= weekend.week.date %></div>
+  <div><%= (weekend.votes.count) %> votes<%= render 'weekends/vote_form', :weekend => weekend %></div>
+  <div><%= image_tag weekend.images.first.image.url(:thumb).to_s %></div>
+</div>

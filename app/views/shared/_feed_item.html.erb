@@ -1,10 +1,8 @@
-<div class="list-group-item" id="<%= feed_item.id %>">
-  <div class="user">
-    <%= link_to feed_item.user.name, feed_item.user %>
-  </div>
-  <div class="week"><%= feed_item.week.date %></div>
-    <div class="votes"> <%= feed_item.votes.count %> Votes </div>
-    <%= render 'weekends/vote_form', :weekend => feed_item %>
-    <%= image_tag feed_item.images.first.image.url(:thumb) %>
-  </div>
-</div>
+    <% weekends.each do |weekend| %>
+        <div class="list-group-item">
+      <div><%= link_to weekend.user.name, weekend.user %></div>
+    <div class="votes"> <%= weekend.votes.count %> Votes </div>
+      <%= render 'weekends/vote_form', :weekend => weekend %>
+      <%= image_tag weekend.images.first.image.url(:thumb) %>
+    </div>
+    <% end %>

@@ -2,8 +2,14 @@ class StaticPagesController < ApplicationController
 
   def home
     if signed_in?
-      @weekend = current_user.weekends.build
-      @feed_items = current_user.feed.paginate(page: params[:page])
+      weeks = Week.all
+      @week_items = Hash.new
+      weeks.each do |week|
+        feed_weekends = week.weekends.from_users_followed_by(current_user)
+        feed_weekends.sort! { |x, y| y.votes.count <=> x.votes.count }
+        @week_items[week] = feed_weekends
+      end
     end
   end
+
 end
