@@ -1,8 +1,6 @@
-
-
-    <% @week_items.each do |week, weekends| %>
-    <div class="list-group-item">
-      <p class="week"><%= week.date %></p>
-      <%= render 'shared/feed_item', :weekends => weekends %>
-    </div>
-    <% end %>
+<% @week_items.each do |week, weekends| %>
+  <div class="list-group-item">
+    <p class="week"><%= week.date %></p>
+    <%= render 'shared/feed_item', :weekends => weekends %>
+  </div>
+<% end %>

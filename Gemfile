@@ -13,6 +13,8 @@ gem 'launchy'
 gem 'devise'
 gem 'carrierwave'
 gem 'aws-sdk'
+gem 'fog'
+gem 'unf'
 gem 'rmagick'
 
 group :development, :test do

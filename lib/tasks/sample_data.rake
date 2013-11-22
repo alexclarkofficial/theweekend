@@ -40,7 +40,7 @@ end
 def make_weekends
   users = User.all
   weeks = Week.all
-  users.each do |user|
+  users[2..10].each do |user|
     weeks.each { |week| user.weekends.create!(week_id: week.id) }
   end
 end

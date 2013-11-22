@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+#Ignore S3 config keys
+/config/initializers/carrierwave.rb
+
 # Ignore other unneeded fields
 doc/
 *.swp
