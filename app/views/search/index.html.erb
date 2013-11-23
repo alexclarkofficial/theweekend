@@ -1,8 +1,7 @@
 <% provide(:title, 'All users') %>
 <%= render 'shared/search' %>
 <h1>All users</h1>
-<%= will_paginate %>
+
 <div class="list-group">
-   <%= render partial: 'user', collection: @users %>
+   <%= render partial: 'users/user', collection: @users %>
 </div>
-<%= will_paginate %>

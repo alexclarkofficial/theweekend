@@ -16,6 +16,7 @@ gem 'aws-sdk'
 gem 'fog'
 gem 'unf'
 gem 'rmagick'
+gem 'textacular', '~> 3.0'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

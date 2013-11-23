@@ -13,6 +13,7 @@ Theweekend::Application.routes.draw do
   match '/signin',     to: 'sessions#new',            via: 'get'
   match '/signout',    to: 'sessions#destroy',        via: 'delete'
   match '/users',      to: 'users#index',             via: 'get'
+  match '/search',     to: 'search#index',            via: 'get'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
