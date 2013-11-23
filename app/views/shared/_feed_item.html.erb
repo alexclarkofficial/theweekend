@@ -3,6 +3,6 @@
       <div><%= link_to weekend.user.name, weekend.user %></div>
     <div class="votes"> <%= weekend.votes.count %> Votes </div>
       <%= render 'weekends/vote_form', :weekend => weekend %>
-      <%= image_tag weekend.images.first.image.url(:thumb) %>
+      <%= render 'shared/weekend_images', :weekend => weekend %>
     </div>
     <% end %>

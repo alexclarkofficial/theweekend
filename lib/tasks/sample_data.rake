@@ -68,8 +68,10 @@ end
 def make_images
   weekends = Weekend.all
   weekends.each do |weekend|
-    image = weekend.images.create!
-    image.image = File.open("app/assets/images/sample_image.jpg")
-    image.save!
+    (1..6).each do |n|
+      image = weekend.images.create!
+      image.image = File.open("app/assets/images/sample_image#{n}.jpg")
+      image.save!
+    end
   end
 end
