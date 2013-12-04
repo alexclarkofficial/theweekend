@@ -1,6 +1,7 @@
 <% @week_items.each do |week, weekends| %>
   <div class="list-group-item">
-    <div id="title-wrap"><%= week.date %></div>
-    <%= render 'shared/feed_item', :weekends => weekends %>
-  </div>
+    <div id="title-wrap"><center><%= week.date %></center></div>
+    <div class="weekends"><%= render 'shared/feed_item', :weekends => weekends %></div>
+  <%= link_to 'Load More Weekends', root_path(:page => @week_items[week].next_page), :class => 'load-more-weekends', :remote => true if @week_items[week].next_page %>
+</div>
 <% end %>

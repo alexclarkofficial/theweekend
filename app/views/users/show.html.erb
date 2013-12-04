@@ -17,10 +17,10 @@
   </aside>
   <div class="col-md-8">
     <% if @user.weekends.any? %>
-      <ul class="weekends">
+      <ul class="weekends" id="weekends">
         <%= render @weekends %>
       </ul>
-      <%= will_paginate @weekends %>
+      <%= link_to 'Load More Weekends', user_path(:page => @weekends.next_page), :class => 'load-more-weekends', :remote => true if @weekends.next_page %>
     <% end %>
   </div>
 </div>

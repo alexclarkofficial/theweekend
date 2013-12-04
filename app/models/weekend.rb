@@ -7,6 +7,7 @@ class Weekend < ActiveRecord::Base
   validates :user_id, presence: true
   has_many :voters, through: :votes, source: :user
   has_many :images
+  self.per_page = 1
 
   accepts_nested_attributes_for :images
 

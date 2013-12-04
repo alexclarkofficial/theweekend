@@ -16,7 +16,7 @@
 /tmp
 
 #Ignore S3 config keys
-/config/initializers/carrierwave.rb
+/config/initializers/aws_credentials.rb
 
 # Ignore other unneeded fields
 doc/

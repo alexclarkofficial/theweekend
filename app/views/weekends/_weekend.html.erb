@@ -1,5 +1,6 @@
 <div class="list-group-item">
-  <div id="title-wrap"><%= weekend.week.date %></div>
-  <div><%= (weekend.votes.count) %> votes<%= render 'weekends/vote_form', :weekend => weekend %></div>
+  <div id="title-wrap"><center><%= weekend.week.date %></center></div>
+  <div class="votes"><%= (weekend.votes.count) %> votes</div>
+  <%= render 'weekends/vote_form', :weekend => weekend %>
 <%= render 'shared/weekend_images', :weekend => weekend %>
 </div>

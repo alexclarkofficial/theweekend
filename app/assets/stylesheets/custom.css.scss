@@ -3,17 +3,15 @@
 /* mixins, variables, etc. */
 
 body{
-	padding: 60px;
+	padding: 45px;
 }
 
 .list-group-item{
-	background-color: rgb(224, 224, 224);
-	border-color: rgb(192, 192, 192);
-}
-
-.navbar {
-    background-color: rgb(217, 83, 79);
-    border-color: rgb(212, 63, 58);
+	background-color: rgb(241, 241, 241);
+	border-color: rgb(241, 241, 241);
+	align-items: center;
+	font: 13px/27px Arial,sans-serif;
+	padding: 0px;
 }
 
 #collapse-button {
@@ -24,10 +22,48 @@ body{
 	color: white;
 }
 
+.dropdown {
+	color: white;
+}
+
 li {
 	color: white;
 }
 
+.dropdown {
+.dropdown-toggle {
+	color: white;
+	}
+}
+
 #title-wrap {
-	background-color: rgb(200, 200, 200);
+	background-color: rgb(163, 38, 56);
+	font-size: 20px;
+	font-family: Helvetica,sans-serif;
+	color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.votes {
+	float: right;
+}
+
+.name {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.navbar-text {
+	margin:0 auto;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  margin-bottom: 60px;
 }

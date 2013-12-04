@@ -26,6 +26,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @weekends = @user.weekends.paginate(page: params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
