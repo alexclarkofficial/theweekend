@@ -1,6 +1,6 @@
 $("#weekends").append('<%= j render(@weekends) %>');
 <% if @weekends.next_page %>
-$('a.load-more-weekends').replaceWith(' <%= j render(@weekends) %>');
+
 <% else %>
 $('a.load-more-weekends').remove();
 <% end %>
