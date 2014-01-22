@@ -1,4 +1,4 @@
-<div class="vote_count" data-weekend-id="<%= weekend.id %>">
+<div class="votes" data-weekend-id="<%= weekend.id %>">
   <% if current_user.voted_for?(weekend) %>
     <%= render 'weekends/unvote', :weekend => weekend %>
   <% else %>

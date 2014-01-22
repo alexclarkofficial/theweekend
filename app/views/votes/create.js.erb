@@ -1,2 +1,2 @@
 $(".votes[data-weekend-id='<%= @weekend.id %>']").html("<%= escape_javascript(render('weekends/unvote', :weekend => @weekend)) %>")
-$(".vote_count[data-weekend-id='<%= @weekend.id %>']").html('<%= @weekend.votes.count %>')
+$(".vote_count[data-weekend-id='<%= @weekend.id %>']").html('<%= @weekend.votes.count %> votes')
