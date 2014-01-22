@@ -1,4 +1,5 @@
-<%= form_for(current_user.votes.find_by(weekend_id: weekend.id), html: { method: :delete }) do |f| %>
+<%= form_for(current_user.votes.find_by(weekend_id: weekend.id), html: { method: :delete },
+             remote: true) do |f| %>
   <%= f.hidden_field :weekend_id %>
   <%= f.submit "Unvote", class: "btn btn-default btn-danger" %>
 <% end %>
