@@ -5,10 +5,9 @@ class StaticPagesController < ApplicationController
       weeks = Week.all
       @week_items = Hash.new
       weeks.each do |week|
-        feed_weekends = week.weekends.from_users_followed_by(current_user)
-        sorted_weekends = feed_weekends.sort { |x, y| y.votes.count <=> x.votes.count }
-        @week_items[week] = sorted_weekends
-        #@week_items.paginate(:page => params[:page])
+        weekends = Weekend.from_users_followed_by(current_user)
+        feed_weekends = weekends.from_week(week)
+        @week_items[week] = feed_weekends
       end
       respond_to do |format|
         format.html
