@@ -1,5 +1,0 @@
-$('.weekends[data-week-id='<%= @week.id %>']').append("<%= escape_javascript(render 'shared/feed_item', :weekends => @week_items[week] %>");
-$('a.load-more-weekends').attr('href', '#{root_path page: @week_items[week].next_page}');
- 
-<% unless @week_items[week].next_page %>
-$('a.load-more-weekends').remove();

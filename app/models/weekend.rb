@@ -6,12 +6,9 @@ class Weekend < ActiveRecord::Base
   validates :user_id, presence: true
   has_many :voters, through: :votes, source: :user
   has_many :images
-  order('votes_count DESC')
+  default_scope order('votes_count DESC')
   accepts_nested_attributes_for :images
-
-  def vote_count
-    self.votes.count
-  end
+  self.per_page = 3
 
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relationships

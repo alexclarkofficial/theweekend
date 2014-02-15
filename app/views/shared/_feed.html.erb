@@ -1,9 +1,11 @@
 <% @week_items.each do |week, weekends| %>
   <% if weekends.any? %>
-  <div class="list-group-item" data-week-id="<%= week.id %>">
-    <div class="title-wrap"><center><%= week.date %></center></div>
-    <div class="weekends"><%= render 'shared/feed_item', :weekends => weekends %></div>
-    <% #link_to 'Load More Weekends', root_path(:page => @week_items[week].next_page), :class => 'load-more-weekends', :remote => true if @week_items[week].next_page %>
-  </div>
-<% end %>
+    <div class="list-group-item">
+      <div class="title-wrap"><center><%= week.date %></center></div>
+      <div class="weekends" data-week-id="<%= week.id %>">
+        <%= render 'shared/feed_item', :weekends => weekends %>
+        <%= link_to 'Load More Weekends', root_path(:page => weekends.next_page), :class => 'load-more-weekends', :remote => true if weekends.next_page %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
