@@ -8,7 +8,7 @@ Theweekend::Application.routes.draw do
   resources :weekends,      only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :votes,         only: [:create, :destroy]
-  root  'static_pages#home'
+  root  'feeds#home'
   match '/signup',     to: 'users#new',               via: 'get'
   match '/signin',     to: 'sessions#new',            via: 'get'
   match '/signout',    to: 'sessions#destroy',        via: 'delete'
