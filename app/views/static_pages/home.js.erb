@@ -1,3 +1,0 @@
-$('.list-group-item[data-week-id='<%= @week.id %>']').append("<%= escape_javascript(render @week_items[week] %>"); 
-<% unless @week_items[week].next_page %>
-$('a.load-more-weekends').remove();
