@@ -1,6 +1,4 @@
-$("#weekends").append('<%= j render(@weekends) %>');
-<% if @weekends.next_page %>
-
-<% else %>
+$("#weekends").append('<%= escape_javascript(render(@weekends)) %>');
+<% unless @weekends.next_page %>
 $('a.load-more-weekends').remove();
 <% end %>

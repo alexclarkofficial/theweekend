@@ -6,7 +6,8 @@ class Weekend < ActiveRecord::Base
   validates :user_id, presence: true
   has_many :voters, through: :votes, source: :user
   has_many :images
-  default_scope order('votes_count DESC')
+  default_scope(order 'votes_count DESC')
+  scope :newest, -> { order 'created_at'}
   accepts_nested_attributes_for :images
   self.per_page = 3
 
