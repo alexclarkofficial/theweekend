@@ -4,7 +4,7 @@ class AddVotesCountToWeekends < ActiveRecord::Migration
 
     Weekend.reset_column_information
     Weekend.find_each do |we|
-      we.update_attribute :votes_count, we.votes.length
+      Weekend.update_counters we.id, :votes_count => we.votes.length
     end
   end
 end
