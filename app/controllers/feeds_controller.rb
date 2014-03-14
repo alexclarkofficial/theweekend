@@ -5,6 +5,7 @@ class FeedsController < ApplicationController
     Week.find_each do |week|
       @week_items[week] = feed_weekends_for_user.from_week(week).paginate(page: params[:page])
     end
+    @week = Week.find(params[:week]) if params[:week]
     respond_to do |format|
       format.html
       format.js

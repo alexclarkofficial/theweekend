@@ -1,10 +1,8 @@
 <% if signed_in? %>
 <div class="col-md-6 col-md-offset-3"
-  <center>
-    <div class="list-group">
-      <%= render 'shared/feed' %>
-  </center>
-</div>
+  <div class="list-group" id="group">
+    <%= render 'shared/feed' %>
+  </div>
 </div>
 <% else %>
   <div class="jumbotron">
