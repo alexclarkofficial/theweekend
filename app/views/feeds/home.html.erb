@@ -1,5 +1,11 @@
 <% if signed_in? %>
-<div class="col-md-6 col-md-offset-3"
+<div class="col-md-6 col-md-offset-3">
+  <% if @week.next %>
+    <%= link_to "next week", root_path(:week => @week.next.id) %>
+  <% end %>
+  <% if @week.previous %>
+    <%= link_to "previous week", root_path(:week => @week.previous.id) %>
+  <% end %>
   <div class="list-group" id="group">
     <%= render 'shared/feed' %>
   </div>

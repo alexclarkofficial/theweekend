@@ -17,9 +17,9 @@
     </aside>
     <div class="col-md-8">
       <% if @user.weekends.any? %>
-        <ul class="weekends" id="weekends">
+        <div class="weekends">
           <%= render @weekends %>
-        </ul>
+        </div>
         <%= link_to 'Load More Weekends', user_path(:page => @weekends.next_page), :class => 'load-more-weekends', :remote => true if @weekends.next_page %>
       <% end %>
     </div>

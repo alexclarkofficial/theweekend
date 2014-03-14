@@ -9,7 +9,7 @@ class Weekend < ActiveRecord::Base
   default_scope -> { order 'votes_count DESC' }
   scope :newest, -> { order 'created_at'}
   accepts_nested_attributes_for :images
-  self.per_page = 2
+  self.per_page = 3
 
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relationships

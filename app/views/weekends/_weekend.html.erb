@@ -1,5 +1,4 @@
 <div class="list-group-item">
-  <div id="title-wrap"><center><%= weekend.week.date %></center></div>
   <div class="vote_count" data-weekend-id="<%= weekend.id %>"><%= (weekend.votes_count) %> votes</div>
   <%= render 'weekends/vote_form', :weekend => weekend %>
   <%= render 'shared/weekend_images', :weekend => weekend %>

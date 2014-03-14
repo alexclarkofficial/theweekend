@@ -1,6 +1,6 @@
-$(".weekends[data-week-id='<%= @week.id %>']").append("<%= escape_javascript(render partial: 'shared/feed_item', collection: @week_items[@week], as: :weekend) %>");
-$("a[data-week-id='<%= @week.id %>']").replaceWith('<%= link_to 'Load More Weekends', root_path(:page => @week_items[@week].next_page, :week => @week.id), remote: true, 'data-week-id' => @week.id %>');
+$(".weekends[data-week-id='<%= @week.id %>']").append("<%= escape_javascript(render @weekends) %>");
+$("a.load-more-weekends").replaceWith('<%= link_to "Load More Weekends", root_path(:page => @weekends.next_page, week: @week.id), remote: true, class: "load-more-weekends" %>');
 
-<% unless @week_items[@week].next_page %>
-  $("a[data-week-id='<%= @week.id %>']").remove()
+<% unless @weekends.next_page %>
+  $("a.load-more-weekends").remove()
 <% end %>

@@ -2,8 +2,8 @@
 
 /* mixins, variables, etc. */
 
-body{
-	padding: 45px;
+.content{
+	padding: 60px;
 }
 
 .list-group-item{
@@ -30,10 +30,8 @@ li {
 	color: white;
 }
 
-.dropdown {
-.dropdown-toggle {
+.dropdown .dropdown-toggle {
 	color: white;
-	}
 }
 
 #title-wrap {

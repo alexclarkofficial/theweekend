@@ -1,11 +1,8 @@
 class FeedsController < ApplicationController
   
   def home
-    @week_items = Hash.new
-    Week.find_each do |week|
-      @week_items[week] = feed_weekends_for_user.from_week(week).paginate(page: params[:page])
-    end
-    @week = Week.find(params[:week]) if params[:week]
+    @week = params[:week] ? Week.find(params[:week]) : Week.first
+    @weekends = feed_weekends_for_user.from_week(@week).paginate(page: params[:page])
     respond_to do |format|
       format.html
       format.js

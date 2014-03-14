@@ -1,4 +1,6 @@
-$("#weekends").append('<%= escape_javascript(render(@weekends)) %>');
+$(".weekends").append("<%= escape_javascript(render @weekends) %>");
+$("a.load-more-weekends").replaceWith('<%= link_to "Load More Weekends", user_path(:page => @weekends.next_page), :class => "load-more-weekends", :remote => true %>')
+
 <% unless @weekends.next_page %>
-$('a.load-more-weekends').remove();
+  $("a.load-more-weekends").remove()
 <% end %>
