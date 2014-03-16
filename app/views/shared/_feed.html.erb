@@ -1,4 +1,4 @@
-<div class="weekends" data-week-id="<%= @week.id %>">
+<div class="weekends">
   <%= render @weekends %>
 </div>
 <%= link_to 'Load More Weekends', root_path(:page => @weekends.next_page, week: @week.id),

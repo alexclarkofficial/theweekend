@@ -1,5 +1,5 @@
-$(".weekends[data-week-id='<%= @week.id %>']").append("<%= escape_javascript(render @weekends) %>");
-$("a.load-more-weekends").replaceWith('<%= link_to "Load More Weekends", root_path(:page => @weekends.next_page, week: @week.id), remote: true, class: "load-more-weekends" %>');
+$(".weekends").append("<%= escape_javascript(render @weekends) %>");
+$("a.load-more-weekends").attr('href', '<%= root_path page: @weekends.next_page, week: @week %>');
 
 <% unless @weekends.next_page %>
   $("a.load-more-weekends").remove()
