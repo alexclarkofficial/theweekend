@@ -1,27 +1,15 @@
 <% provide(:title, @user.name) %>
-<div class="container content">
-  <div class="row">
-    <aside class="col-md-4">
-      <section>
-        <h1>
-          <%= @user.name %>
-        </h1>
-        <p>
-          <%= @user.email %>
-        </p>
-      </section>
-      <section>
+<%= render 'layouts/header' %>
+<div id="page">
+  <div class="stats">
+  <%= @user.name %>
         <%= render 'shared/stats' %>
-      </section>
       <%= render 'follow_form', :user => @user if signed_in? %>
-    </aside>
-    <div class="col-md-8">
-      <% if @user.weekends.any? %>
-        <div class="weekends">
-          <%= render @weekends %>
-        </div>
-        <%= link_to 'Load More Weekends', user_path(:page => @weekends.next_page), :class => 'load-more-weekends', :remote => true if @weekends.next_page %>
-      <% end %>
     </div>
+      <% if @user.weekends.any? %>
+    <div class="weekends">
+          <%= render @weekends %>
+        <%= link_to 'Load More Weekends', user_path(:page => @weekends.next_page), :class => 'load-more-weekends', :remote => true if @weekends.next_page %>
+      </div>
+      <% end %>
   </div>
-</div>

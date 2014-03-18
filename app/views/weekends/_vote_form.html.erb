@@ -1,7 +1,5 @@
-<div class="votes" data-weekend-id="<%= weekend.id %>">
-  <% if current_user.voted_for?(weekend) %>
-    <%= render 'weekends/unvote', :weekend => weekend %>
-  <% else %>
-    <%= render 'weekends/vote', :weekend => weekend %>
-  <% end %>
-</div>
+<% if current_user.voted_for?(weekend) %>
+  <%= render 'weekends/unvote', :weekend => weekend %>
+<% else %>
+  <%= render 'weekends/vote', :weekend => weekend %>
+<% end %>

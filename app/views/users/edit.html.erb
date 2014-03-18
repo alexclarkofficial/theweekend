@@ -1,5 +1,6 @@
 <% provide(:title, "Edit Profile") %>
-<div class="container content">
+<%= render 'layouts/header' %>
+<div id="page">
   <h1>Edit Profile</h1>
 
     <%= form_for(@user, :class => "form-horizontal", :role => "form") do |f| %>

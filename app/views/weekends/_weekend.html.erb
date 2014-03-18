@@ -1,12 +1,13 @@
-<div class="list-group-item">
-  <div class="name">
-      <%= weekend.week.date %>
-    <% if @user %>
-    <% else %>
-      <%= link_to weekend.user.name, weekend.user %>
-    <% end %>
-  </div>
-  <div class="vote_count" data-weekend-id="<%= weekend.id %>"><%= (weekend.votes_count) %> votes</div>
-  <%= render 'weekends/vote_form', :weekend => weekend %>
+<div class="weekend-header">
+  <% if @user %>
+    <%= weekend.week.date.strftime("%B %d %Y") %>
+  <% else %>
+    <%= link_to weekend.user.name, weekend.user %>
+  <% end %>
+  <a class="votes" data-weekend-id="<%= weekend.id %>" data-count="<%= weekend.votes_count %>">
+    <%= render 'weekends/vote_form', :weekend => weekend %>
+  </a>
+</div>
+<div class="pictures">
   <%= render 'shared/weekend_images', :weekend => weekend %>
 </div>

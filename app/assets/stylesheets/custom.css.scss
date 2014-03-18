@@ -1,68 +1,254 @@
-@import "bootstrap";
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  background-color: #FFF;
+  line-height: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+#page {
+  padding: 60px 0;
+}
+
+/* header */
+
+#header {
+  width: 100%;
+  background: #352A31;
+  color: white;
+  position: fixed;
+  z-index: 1;
+  height: 60px;
+  letter-spacing: 2px;
+}
+
+.menu {
+  display: inline;
+  height: 100%;
+}
+
+.menu, .menu-list {
+  position: absolute;
+  left: 50%;
+  width: 200px;
+  margin-left: -100px;
+  text-align: center;
+}
+
+.logo {
+  position: absolute;
+  color: #FFF;
+  left: 50%;
+  width: 150px;
+  margin: 16px 0 16px -75px;
+  text-align: center;
+}
+
+.menu:hover {
+  background: white;
+  color: black;
+}
+
+.menu-list {
+  background: #FFF;
+  display: none;
+  padding: 0px;
+  top: -8px;
+}
+
+.menu:hover > .logo {
+  display: none;
+}
+
+.menu:hover > .menu-list {
+  display: block;
+}
+
+.menu-list li {
+  list-style: none;
+  padding: 10px 0;
+}
+
+/* feed */
+
+#feed {
+  max-width: 612px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
 
 /* mixins, variables, etc. */
 
-.content {
-	padding-top: 60px;
-	padding-bottom: 60px;
-}
 
-.list-group-item{
-	background-color: rgb(241, 241, 241);
-	border-color: rgb(241, 241, 241);
-	align-items: center;
-	font: 13px/27px Arial,sans-serif;
-	padding: 0px;
-}
-
-#collapse-button {
-	border-color: transparent;
-}
-
-#logo {
-	color: white;
-}
-
-.dropdown {
-	color: white;
-}
-
-li {
-	color: white;
-}
-
-.dropdown .dropdown-toggle {
-	color: white;
-}
-
-#title-wrap {
-	background-color: rgb(163, 38, 56);
-	font-size: 20px;
-	font-family: Helvetica,sans-serif;
-	color: white;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-.vote_count {
-	float: right;
-}
-
-.name {
-	font-size: 20px;
-	font-weight: bold;
-}
-
-.navbar-text {
-	margin:0 auto;
-}
 
 /* miscellaneous */
 
-.debug_dump {
-  clear: both;
+.header-weekend-nav {
+  position: relative;
+  padding: 20px 10px;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: #FFF;
+  display: none;
+}
+
+.header-weekend-nav.previous {
+  float: right;
+}
+
+.header-weekend-nav.next {
   float: left;
-  width: 100%;
-  margin-top: 45px;
-  margin-bottom: 60px;
+}
+
+/* button */
+
+.button {
+  display: inline;
+  border-radius: 50px;
+  box-shadow: none;
+  transition-property: #F2F1F0;
+  transition-duration: 0.3s;
+  color: #FFF;
+  border: medium none;
+  height: 32px;
+  line-height: 32px;
+  padding: 0px 25.6px
+}
+
+.button-create:active {
+  transition-duration: 0s;
+  background: #007998;
+  color: #00647F;
+}
+
+.button-create:hover {
+  background: #00b5e5;
+}
+
+.button-create {
+    background: #00A1CB;  
+}
+
+.button-destroy:active {
+  transition-duration: 0s;
+  background: #cd5240;
+  color: #ac2815;
+}
+
+.button-destroy:hover {
+  background: #e8543f;
+}
+
+.button-destroy {
+    background: #E54028;  
+}
+
+.votes:after {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #d3d3d3;
+  background-color: #eee;
+  padding: 0 8px;
+  color: #352A31;
+  content: attr(data-count);
+  left: 100%;
+  text-shadow: none;
+}
+
+.votes {
+  text-shadow: none;
+}
+
+.new_vote, .edit_vote {
+  display: inline;
+}
+
+/* week button */
+
+
+#week {
+  position: fixed;
+  top: 100px;
+  left: 40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 70px;
+  background: #E54028;
+  text-align: center;
+  display: none;
+}
+
+#name {
+  position: fixed;
+  top: 70px;
+  width: 220px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  display: none;
+}
+
+#week .date {
+  position: relative;
+  top: 50px;
+  color: #FFF;
+  font-size: 14px;
+  letter-spacing: 0.4em;
+}
+
+/* weekend header */
+
+.weekend-header {
+  padding: 10px 5px;
+  text-align: left;
+  display: block;
+}
+
+.weekend-header .votes {
+  position: relative;
+  align: center;
+}
+
+.weekend-header a {
+  letter-spacing: 0.1em;
+}
+
+@media all and (min-width: 1000px) {
+  
+  #week, #name, .header-weekend-nav {
+    display: block;
+  }
+
+  .stats, .weekends {
+  display: inline-block;
+  }
+}
+
+@media all and (min-width: 615px) {
+
+  .weekend-header {
+  padding: 10px 0;
+  }  
+}
+
+.stats, .weekends {
+  display: block;
+}
+
+.stats {
+  top: 10px
+}
+
+.weekends {
+  left: 33%;
+  width: 612px;
 }

@@ -1,5 +1,5 @@
 <%= form_for(current_user.votes.build(weekend_id: weekend.id),
              remote: true) do |f| %>
   <%= f.hidden_field :weekend_id %>
-  <%= f.submit "Vote", class:"btn btn-primary"%>
+  <%= f.submit "vote", class:"button button-create" %>
 <% end %>
