@@ -1,11 +1,11 @@
 <div id="header">
   <% if @week && @week.next %>
-    <%= link_to 'previous weekend', root_path(:week => @week.next.id),
+    <%= link_to '', root_path(:week => @week.next.id),
         class: "header-weekend-nav previous" %>
   <% end %>
   <% if @week && @week.previous %>
-    <%= link_to 'next weekend', root_path(:week => @week.previous.id),
-        class: "header-weekend-nav next"%>
+    <%= link_to '', root_path(:week => @week.previous.id),
+        class: "header-weekend-nav next fa"%>
   <% end %>
   <div class="menu">
     <a class="logo">TheWeekend</a>

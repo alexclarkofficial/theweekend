@@ -97,11 +97,21 @@ a {
   font-size: 12px;
   letter-spacing: 0.4em;
   color: #FFF;
-  display: none;
+  font-family: FontAwesome;
 }
 
 .header-weekend-nav.previous {
   float: right;
+}
+
+.header-weekend-nav.previous:after {
+  float: right;
+  content: '\f054';
+}
+
+.header-weekend-nav.next:after {
+  float: right;
+  content: '\f053';
 }
 
 .header-weekend-nav.next {
@@ -236,8 +246,22 @@ a {
 @media all and (min-width: 615px) {
 
   .weekend-header {
-  padding: 10px 0;
-  }  
+    padding: 10px 0;
+  }
+
+  .header-weekend-nav.previous:after {
+    float: right;
+    content: 'previous weekend';
+  }
+
+  .header-weekend-nav:after {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .header-weekend-nav.next:after {
+    float: left;
+    content: 'next weekend';
+  }
 }
 
 .stats, .weekends {
