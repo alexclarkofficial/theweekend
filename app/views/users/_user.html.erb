@@ -1,7 +1,7 @@
 <div class="list-group-item">
-  <%= link_to user.name, user %>
-	<%= render 'users/follow_form', :user => user %>
+  <span class="name"><%= link_to user.name, user %></span>
+	<span class="follow-button"><%= render 'users/follow_form', :user => user %></span>
 	<% if current_user.admin? && !current_user?(user) %>
-	  <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+	  <span class="delete"><%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %></span>
 	<% end %>
 </div>

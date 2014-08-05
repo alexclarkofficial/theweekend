@@ -1,9 +1,14 @@
+html {
+  height: 100%
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
   background-color: #FFF;
   line-height: 20px;
+  height: 100%;
 }
 
 a {
@@ -59,7 +64,7 @@ a {
 .menu-list {
   background: #FFF;
   display: none;
-  padding: 0px;
+  padding: 0;
   top: -8px;
 }
 
@@ -73,23 +78,9 @@ a {
 
 .menu-list li {
   list-style: none;
-  padding: 10px 0;
+  padding: 15px 0;
+  border-bottom: 1px solid;
 }
-
-/* feed */
-
-#feed {
-  max-width: 612px;
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-}
-
-/* mixins, variables, etc. */
-
-
-
-/* miscellaneous */
 
 .header-weekend-nav {
   position: relative;
@@ -118,6 +109,22 @@ a {
   float: left;
 }
 
+/* feed */
+
+#feed {
+  max-width: 612px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 50px 0;
+}
+
+/* mixins, variables, etc. */
+
+
+
+/* miscellaneous */
+
 /* button */
 
 .button {
@@ -144,7 +151,7 @@ a {
 }
 
 .button-create {
-    background: #00A1CB;  
+    background: #00A1CB;
 }
 
 .button-destroy:active {
@@ -158,7 +165,7 @@ a {
 }
 
 .button-destroy {
-    background: #E54028;  
+    background: #E54028;
 }
 
 .votes:after {
@@ -183,7 +190,6 @@ a {
 }
 
 /* week button */
-
 
 #week {
   position: fixed;
@@ -233,7 +239,7 @@ a {
 }
 
 @media all and (min-width: 1000px) {
-  
+
   #week, #name, .header-weekend-nav {
     display: block;
   }
@@ -276,3 +282,87 @@ a {
   left: 33%;
   width: 612px;
 }
+
+/* log in */
+
+.login-page {
+  display: table;
+  height: 100%;
+  width: 100%
+}
+
+.login {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.form-group {
+  padding: 10px;
+}
+
+.form-group label {
+  width: 150px;
+  display: inline-block;
+}
+
+.btn {
+  background: #352A31;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  min-width: 100px;
+}
+
+.searchbar {
+  float: right;
+  padding: 20px;
+}
+
+.name, .follow-button, .delete {
+  display: inline-block;
+}
+
+.name {
+  width: 300px;
+  text-align: left;
+}
+
+.follow-button {
+  width: 200px;
+}
+
+.list-group-item {
+  text-align: left;
+  padding: 10px 0;
+  border-top: 1px solid;
+}
+
+.stats {
+  padding-bottom: 20px;
+}
+
+.stat {
+  display: inline-block;
+}
+
+.stat-num {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  background: #cd5240;
+  color: #FFF;
+}
+

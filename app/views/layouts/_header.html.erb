@@ -9,11 +9,11 @@
   <% end %>
   <div class="menu">
     <a class="logo">TheWeekend</a>
-      <ul class="menu-list">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Users", users_path %></li>
-        <li><%= link_to "My Profile", user_path(current_user) %></li>
-        <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+    <ul class="menu-list">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Users", users_path %></li>
+      <li><%= link_to "My Profile", user_path(current_user) %></li>
+      <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
     </ul>
   </div>
 </div>

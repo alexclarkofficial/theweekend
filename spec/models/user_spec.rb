@@ -9,31 +9,6 @@ describe User do
 
   subject { @user }
 
-  it { should respond_to(:name) }
-  it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-  it { should respond_to(:remember_token) }
-  it { should respond_to(:authenticate) }
-  it { should respond_to(:admin) }
-  it { should respond_to(:weekends) }
-  it { should respond_to(:feed) }
-  it { should respond_to(:relationships) }
-  it { should respond_to(:followed_users) }
-  it { should respond_to(:reverse_relationships) }
-  it { should respond_to(:followers) }
-  it { should respond_to(:following?) }
-  it { should respond_to(:follow!) }
-  it { should respond_to(:votes) }
-  it { should respond_to(:voted_weekends) }
-  it { should respond_to(:voted_for?) }
-  it { should respond_to(:vote!) }
-  it { should respond_to(:unvote!) }
-
-  it { should be_valid }
-  it { should_not be_admin }
-
   describe "with admin set to 'true'" do
     before do
       @user.save!
